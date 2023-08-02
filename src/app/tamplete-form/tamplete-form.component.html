@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="process()" #Input_form="ngForm">
+            <div class="mb-2">
+                <label class="form-label"> Nombre </label>
+                <input name="nombre" class="form-control" placeholder="Ingrese su nombre..." [(ngModel)]="persona.name" required #name="ngModel">
+                <div class="alert alert-danger" [hidden]="name.valid || name.pristine">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label"> Edad </label>
+                <input name="edad" type="number" class="form-control" placeholder="Ingrese su edad..." [(ngModel)]="persona.age" required #age="ngModel">
+                <div class="alert alert-danger" [hidden]="age.valid || age.pristine">
+                    La edad es obligatoria
+                </div>
+            </div>
+            <button class="btn btn-primary" [disabled]="Input_form.invalid"> Enviar </button> <!-- name.invalid || age.invalid -->
+        </form>
+    </div>
+</div>
+{{ Input_form.valid | json }}
+<!-- {{ name.errors | json }}
+<hr>
+{{ name.valid | json }}
+{{ persona | json }} -->
